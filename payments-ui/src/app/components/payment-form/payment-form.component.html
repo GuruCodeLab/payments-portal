@@ -1,0 +1,43 @@
+<kendo-dialog [title]="title" [minWidth]="340" [width]="480" (close)="onCancel()">
+  <div class="form-body">
+
+    <div class="form-field">
+      <kendo-label text="Amount *"></kendo-label>
+      <kendo-numerictextbox
+        [(ngModel)]="amount"
+        [min]="0.01"
+        [decimals]="2"
+        [step]="0.01"
+        [format]="'n2'"
+        placeholder="Enter amount"
+        class="full-width"
+      ></kendo-numerictextbox>
+    </div>
+
+    <div class="form-field">
+      <kendo-label text="Currency *"></kendo-label>
+      <kendo-dropdownlist
+        [(ngModel)]="currency"
+        [data]="currencies"
+        [valuePrimitive]="true"
+        class="full-width"
+      ></kendo-dropdownlist>
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-banner">
+        <span class="error-icon">⚠</span> {{ errorMessage }}
+      </div>
+    }
+
+  </div>
+
+  <kendo-dialog-actions layout="end">
+    <button kendoButton fillMode="outline" (click)="onCancel()" [disabled]="saving">
+      Cancel
+    </button>
+    <button kendoButton themeColor="primary" (click)="onSave()" [disabled]="saving">
+      {{ saving ? 'Saving…' : (isEdit ? 'Update' : 'Add Payment') }}
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>

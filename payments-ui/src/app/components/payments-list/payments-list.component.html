@@ -1,0 +1,108 @@
+<div class="pl-page">
+
+  <!-- Page Header -->
+  <div class="pl-header">
+    <div class="pl-header-left">
+      <h1 class="pl-title">Payments</h1>
+      <span class="pl-subtitle">Manage all your transactions</span>
+    </div>
+    <button kendoButton themeColor="primary" size="large" (click)="openAdd()" class="btn-add">
+      <span class="btn-icon">＋</span> Add Payment
+    </button>
+  </div>
+
+  <!-- Toast -->
+  @if (toastMessage) {
+    <div class="toast" [class.toast-error]="toastType === 'error'" [class.toast-success]="toastType === 'success'">
+      <span class="toast-icon">{{ toastType === 'success' ? '✓' : '⚠' }}</span>
+      {{ toastMessage }}
+    </div>
+  }
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <span class="stat-value">{{ payments.length }}</span>
+      <span class="stat-label">Total Payments</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{{ payments.length > 0 ? payments[0].currency : '' }}</span>
+      <span class="stat-label">Latest Currency</span>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-wrapper" [class.grid-loading]="loading">
+    @if (loading) {
+      <div class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading payments…</p>
+      </div>
+    }
+
+    <kendo-grid
+      [data]="payments"
+      [pageSize]="10"
+      [pageable]="true"
+      [sortable]="true"
+      [resizable]="true"
+      class="payments-grid"
+    >
+      <kendo-grid-column field="reference" title="Reference" [width]="190">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <span class="reference-badge">{{ dataItem.reference }}</span>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="amount" title="Amount" [width]="150">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <span class="amount-value">{{ formatAmount(dataItem.amount, dataItem.currency) }}</span>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="currency" title="Currency" [width]="110">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <span class="currency-badge" [ngClass]="getCurrencyClass(dataItem.currency)">
+            {{ dataItem.currency }}
+          </span>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="createdAt" title="Created At" [width]="185">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <span class="date-value">{{ formatDate(dataItem.createdAt) }}</span>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column title="Actions" [width]="140" [locked]="false">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div class="action-btns">
+            <button kendoButton fillMode="flat" themeColor="info" size="small" (click)="openEdit(dataItem)" title="Edit">
+              ✏
+            </button>
+            <button kendoButton fillMode="flat" themeColor="error" size="small" (click)="confirmDelete(dataItem)" title="Delete">
+              🗑
+            </button>
+          </div>
+        </ng-template>
+      </kendo-grid-column>
+
+      <ng-template kendoGridNoRecordsTemplate>
+        <div class="no-records">
+          <div class="no-records-icon">💳</div>
+          <p>No payments yet. Click <strong>Add Payment</strong> to get started.</p>
+        </div>
+      </ng-template>
+    </kendo-grid>
+  </div>
+
+</div>
+
+<!-- Add/Edit Dialog -->
+@if (showForm) {
+  <app-payment-form
+    [payment]="selectedPayment"
+    (saved)="onSaved($event)"
+    (cancelled)="onCancelled()"
+  ></app-payment-form>
+}
