@@ -5,16 +5,16 @@ A modern, full-stack payment management application built with **ASP.NET Core** 
 
 ## 📋 Features
 
-- ✅ **Create Payments** - Add new payment transactions with amount and currency
-- ✅ **View Payments** - Display all payments in a responsive grid with sorting and pagination
-- ✅ **Edit Payments** - Update existing payment details (amount, currency)
-- ✅ **Delete Payments** - Remove payments with confirmation dialog
-- ✅ **Multi-Currency Support** - USD, EUR, INR, GBP currencies
-- ✅ **Real-Time Validation** - Form validation with error messaging
-- ✅ **Professional UI** - Modern light theme with Kendo UI components
-- ✅ **REST API** - Full REST API with Swagger documentation
-- ✅ **CORS Support** - Cross-origin requests enabled for SPA integration
-- ✅ **Database Persistence** - SQL Server with Entity Framework Core
+-  **Create Payments** - Add new payment transactions with amount and currency
+-  **View Payments** - Display all payments in a responsive grid with sorting and pagination
+-  **Edit Payments** - Update existing payment details (amount, currency)
+-  **Delete Payments** - Remove payments with confirmation dialog
+-  **Multi-Currency Support** - USD, EUR, INR, GBP currencies
+-  **Real-Time Validation** - Form validation with error messaging
+-  **Professional UI** - Modern light theme with Kendo UI components
+-  **REST API** - Full REST API with Swagger documentation
+-  **CORS Support** - Cross-origin requests enabled for SPA integration
+-  **Database Persistence** - SQL Server with Entity Framework Core
 
 ## 🛠️ Tech Stack
 
