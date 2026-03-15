@@ -299,9 +299,3 @@ For issues or questions:
 2. Review browser console for frontend errors
 3. Check .NET logs for backend errors
 4. Verify database connectivity
-
-## 📄 License
-
-This project is provided as-is for educational and development purposes.
-
----
