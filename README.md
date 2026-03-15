@@ -305,6 +305,3 @@ For issues or questions:
 This project is provided as-is for educational and development purposes.
 
 ---
-
-**Last Updated:** March 14, 2026
-**Version:** 1.0.0
