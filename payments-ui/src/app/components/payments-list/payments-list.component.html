@@ -77,11 +77,11 @@
       <kendo-grid-column title="Actions" [width]="140" [locked]="false">
         <ng-template kendoGridCellTemplate let-dataItem>
           <div class="action-btns">
-            <button kendoButton fillMode="flat" themeColor="info" size="small" (click)="openEdit(dataItem)" title="Edit">
-              ✏
+            <button kendoButton fillMode="flat" themeColor="info" size="small" (click)="openEdit(dataItem)" title="Edit" class="icon-btn">
+              <span class="icon-edit">✎</span>
             </button>
-            <button kendoButton fillMode="flat" themeColor="error" size="small" (click)="confirmDelete(dataItem)" title="Delete">
-              🗑
+            <button kendoButton fillMode="flat" themeColor="error" size="small" (click)="confirmDelete(dataItem)" title="Delete" class="icon-btn">
+              <span class="icon-delete">✕</span>
             </button>
           </div>
         </ng-template>

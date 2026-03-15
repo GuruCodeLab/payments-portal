@@ -222,8 +222,25 @@
   justify-content: center;
   min-width: 32px;
   min-height: 32px;
-  font-size: 1.1rem;
   padding: 0.4rem 0.6rem !important;
+}
+
+.icon-btn span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.icon-edit {
+  transform: rotate(-90deg);
+  display: inline-block;
+}
+
+.icon-delete {
+  font-size: 1.1rem;
 }
 
 /* Empty State */
